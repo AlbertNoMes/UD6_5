@@ -1,23 +1,25 @@
 import javax.swing.JOptionPane;
+
 public class decimalBinarioAPP {
 
 	public static void main(String[] args) {
-		String texto=JOptionPane.showInputDialog("Introdice un numero"); //Pedimos el numero
-		int numero=Integer.parseInt(texto); //Pasamos el numero a int
-		String binario=decimalBinario(numero); //Declaramos ya el binario
-		System.out.println("El numero "+numero+" en binario es "+binario); //Solucion final
+
+		int number = Integer.parseInt(JOptionPane.showInputDialog("Escribe un numero"));
+		System.out.println("El binario de " + number + " es: " + numBinary(number));
+
 	}
-	public static String decimalBinario (int numero) {
-		String binario=""; //
-		String digito;
-		for(int i=numero;i>0;i/=2) {
-			if(i%2==1) {
-				digito="1";
-			}else {
-				digito="0";
-			}
-			binario=digito+binario;
+
+	public static String numBinary(int number) {
+		String result = "";
+		int resto = number % 2;
+		int resultadoDivision = number / 2;
+		result = resto + ""; // MANERA RAPIDA DE CONVERTIR INT A STRING
+		while (resultadoDivision >= 1) {
+			resto = resultadoDivision % 2;
+			resultadoDivision = resultadoDivision / 2;
+			result = resto + result;
 		}
-		return binario;
+		return result;
 	}
+
 }
